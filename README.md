@@ -8,6 +8,21 @@ You can use Android Studio to build it, just like you would build any other app.
 
 Please note that Kogame Translate requires Android 7+. I'm working on lowering this requirement and am hoping for at least Android 4.4 or 5.
 
+## Supported Languages
+As of now, Kogame Translate supports the following languages:
+* German
+* Spanish
+* English (both US and UK)
+* French
+* Italian
+* Japanese
+* Polish
+* Russian
+* Ukrainian
+* Chinese (Simplified)
+
+More languages are being added regularly.
+
 ## Getting started
 There's nothing to put here. You can use the app right after the installation, without having to create an account first.
 
