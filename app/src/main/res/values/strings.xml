@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name" translatable="false">Kogame Translate</string>
+    <string name="feedback">Feedback</string>
+    <string name="copy_translation_text">Copy translation text</string>
+    <string name="enter_text_here">Enter text here</string>
+    <string name="translation_will_appear_here">Translation will appear here</string>
+    <string name="translate">Translate</string>
+    <string name="translating">Translating…</string>
+    <string name="no_flag">❓</string>
+    <string name="no_server_response">No response</string>
+    <string name="no_text_to_translate">Please enter text to translate.</string>
+    <string name="no_target_language">Please select a target language first.</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="feedback">Отзыв</string>
+    <string name="copy_translation_text">Скопировать перевод</string>
+    <string name="enter_text_here">Введи текст здесь</string>
+    <string name="translation_will_appear_here">Перевод появится здесь</string>
+    <string name="translate">Перевести</string>
+    <string name="translating">Перевожу…</string>
+    <string name="no_flag">❓</string>
+    <string name="no_server_response">Нет ответа от сервера</string>
+    <string name="no_text_to_translate">Пожалуйста, введи текст для перевода.</string>
+    <string name="no_target_language">Пожалуйста, выбери язык перевода.</string>
+</resources>
