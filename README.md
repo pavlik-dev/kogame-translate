@@ -3,11 +3,6 @@ Use the power of LLMs to translate text of any size right on your phone!
 
 **Kogame Translate** makes it possible to translate texts into one of 11 languages ​​using open language models, at a speed comparable to other popular machine translation services.
 
-## Building
-You can use Android Studio to build it, just like you would build any other app.
-
-Please note that Kogame Translate requires Android 7+. I'm working on lowering this requirement and am hoping for at least Android 4.4 or 5.
-
 ## Supported Languages
 As of now, Kogame Translate supports the following languages:
 * German
@@ -22,6 +17,23 @@ As of now, Kogame Translate supports the following languages:
 * Chinese (Simplified)
 
 More languages are being added regularly.
+
+## Building Kogame Translate
+
+To build Kogame Translate, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/pavlik-dev/kogame-translate.git
+   ```
+
+2. Open the project in **Android Studio**.
+
+3. Make sure to have Android SDK version 36 or higher installed
+
+4. Click "Run" to build and launch the app.
+
+**Note:** Kogame Translate requires Android 7.0 (API level 24) or higher. I'm working on supporting lower versions (Android 4.4 or 5.0).
 
 ## Getting started
 There's nothing to put here. You can use the app right after the installation, without having to create an account first.
