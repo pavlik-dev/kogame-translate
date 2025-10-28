@@ -4,12 +4,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    private static final String BASE_URL = "https://kogame-translate.pavliktt.workers.dev/"; //  trailing slash!
     private static Retrofit retrofit;
-    public static TranslationApi getApi() {
+    public static TranslationApi getApi(String base_url) {
+        base_url += base_url.endsWith("/") ? "" : "/";
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
+                    .baseUrl(base_url)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

@@ -4,7 +4,7 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -12,12 +12,11 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.preference.PreferenceManager;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -27,6 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+    String base_url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        base_url = prefs.getString("base_url", "https://kogame-translate.pavliktt.workers.dev/");
         fetchLanguages();
 
         Button retryButton = findViewById(R.id.retry_connection_button);
@@ -47,11 +49,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fetchLanguages() {
-        ApiClient.getApi().getLanguages().enqueue(new Callback<>() {
         TextView textView = findViewById(R.id.textView);
         textView.setText(R.string.welcome_message);
         findViewById(R.id.retry_connection_button).setVisibility(GONE);
         findViewById(R.id.progressBar).setVisibility(VISIBLE);
+        ApiClient.getApi(base_url).getLanguages().enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<Map<String, LanguageInfo>> call,
                                    @NonNull Response<Map<String, LanguageInfo>> response) {

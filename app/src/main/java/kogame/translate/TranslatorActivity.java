@@ -8,6 +8,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
@@ -25,8 +26,8 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.preference.PreferenceManager;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -40,10 +41,12 @@ public class TranslatorActivity extends AppCompatActivity {
 
     ArrayList<Language> languages = new ArrayList<>();
 
-    TranslationApi api = ApiClient.getApi();
+    TranslationApi api = null;
     Language currentLanguage;
     Drawable outputPanelDrawable;
     Drawable outputPanelErrorDrawable;
+
+    SharedPreferences prefs;
 
     @Override
     @SuppressLint("MissingInflatedId")
@@ -76,12 +79,20 @@ public class TranslatorActivity extends AppCompatActivity {
                 R.drawable.output_panel);
         outputPanelErrorDrawable = ContextCompat.getDrawable(this,
                 R.drawable.output_panel_error);
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
+        initializeApi();
         setupListeners();
         setupTargetLanguages();
     }
 
     /// Setup functions
+
+    private void initializeApi() {
+        String base_url = prefs.getString("base_url",
+                "https://kogame-translate.pavliktt.workers.dev");
+        api = ApiClient.getApi(base_url);
+    }
 
     private void setupListeners() {
         binding.inputText.addTextChangedListener(new TextWatcher() {
@@ -127,7 +138,7 @@ public class TranslatorActivity extends AppCompatActivity {
     }
 
     protected void settings_button_clicked(View view) {
-        startActivity(new Intent(this, SettingsActivity.class));
+//        startActivity(new Intent(this, SettingsActivity.class));
     }
 
     protected void copy_button_clicked(View view) {
