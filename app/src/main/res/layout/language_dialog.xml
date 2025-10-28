@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/ibm_plex_sans_medium"
+        app:fontFamily="@font/ibm_plex_sans_medium"
         android:text="Translate to..."
         android:textColor="#F9FFD6"
         android:textSize="20sp"
@@ -22,6 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:contentDescription="Close"
         android:id="@+id/closeButton"
         android:layout_width="48dp"
         android:layout_height="48dp"
