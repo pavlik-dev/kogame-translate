@@ -1,9 +1,14 @@
 package kogame.translate;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.Window;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -36,10 +41,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         fetchLanguages();
+
+        Button retryButton = findViewById(R.id.retry_connection_button);
+        retryButton.setOnClickListener((view) -> fetchLanguages());
     }
 
     private void fetchLanguages() {
         ApiClient.getApi().getLanguages().enqueue(new Callback<>() {
+        TextView textView = findViewById(R.id.textView);
+        textView.setText(R.string.welcome_message);
+        findViewById(R.id.retry_connection_button).setVisibility(GONE);
+        findViewById(R.id.progressBar).setVisibility(VISIBLE);
             @Override
             public void onResponse(@NonNull Call<Map<String, LanguageInfo>> call,
                                    @NonNull Response<Map<String, LanguageInfo>> response) {
@@ -57,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Call<Map<String, LanguageInfo>> call,
                                   @NonNull Throwable t) {
+                Log.println(Log.ERROR, "KogameTranslate", t.getClass().getName());
                 connectionFailed();
             }
         });
@@ -64,24 +77,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void connectionFailed() {
         runOnUiThread(() -> {
-            AlertDialog dialog = new AlertDialog.Builder(this)
-                    .setTitle("Failed to connect to the server!")
-                    .setMessage("Please check your internet connection and try again.")
-                    .setCancelable(false)
-                    .setPositiveButton("Close",
-                            (dialogInterface, which) -> finishAffinity())
-                    .create();
+            findViewById(R.id.retry_connection_button).setVisibility(VISIBLE);
+            findViewById(R.id.progressBar).setVisibility(GONE);
 
-            dialog.setOnShowListener(d -> {
-                dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-                        .setTextColor(ContextCompat.getColor(this, R.color.text_color));
-                Window window = dialog.getWindow();
-                if (window != null)
-                    window.setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this,
-                            R.color.ic_launcher_background)));
-            });
-
-            dialog.show();
+            TextView textView = findViewById(R.id.textView);
+            textView.setText(R.string.server_connect_failed);
         });
     }
 

@@ -10,4 +10,7 @@
     <string name="no_server_response">Нет ответа от сервера</string>
     <string name="no_text_to_translate">Пожалуйста, введи текст для перевода.</string>
     <string name="no_target_language">Пожалуйста, выбери язык перевода.</string>
+    <string name="welcome_message">Привет!</string>
+    <string name="retry_button">Попробовать еще раз</string>
+    <string name="server_connect_failed">Не удалось подключиться к серверу!</string>
 </resources>
