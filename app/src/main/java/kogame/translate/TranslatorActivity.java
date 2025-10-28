@@ -47,6 +47,8 @@ public class TranslatorActivity extends AppCompatActivity {
     Drawable outputPanelErrorDrawable;
 
     SharedPreferences prefs;
+    int inputMaxCharacterCount;
+    String charCountFormat;
 
     @Override
     @SuppressLint("MissingInflatedId")
@@ -80,7 +82,11 @@ public class TranslatorActivity extends AppCompatActivity {
         outputPanelErrorDrawable = ContextCompat.getDrawable(this,
                 R.drawable.output_panel_error);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        inputMaxCharacterCount = getResources().getInteger(R.integer.input_max_character_count);
 
+        charCountFormat = getResources().getText(R.string.char_count).toString();
+        binding.charCount.setText(String.format(charCountFormat,
+                0, inputMaxCharacterCount));
         initializeApi();
         setupListeners();
         setupTargetLanguages();
@@ -103,6 +109,8 @@ public class TranslatorActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                binding.charCount.setText(String.format(charCountFormat,
+                        s.length(), inputMaxCharacterCount));
                 binding.translateButton.setEnabled(!s.toString().isBlank());
                 set_translate_drawable(R.drawable.arrow_forward);
             }
