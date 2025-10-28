@@ -18,7 +18,8 @@ As of now, Kogame Translate supports the following languages:
 
 More languages are being added regularly.
 
-## Building Kogame Translate
+## Getting started
+### Building from source
 
 To build Kogame Translate, follow these steps:
 
@@ -35,8 +36,8 @@ To build Kogame Translate, follow these steps:
 
 **Note:** Kogame Translate requires Android 7.0 (API level 24) or higher. I'm working on supporting lower versions (Android 4.4 or 5.0).
 
-## Getting started
-There's nothing to put here. You can use the app right after the installation, without having to create an account first.
+### Installing APK
+You can find prebuilt APKs [here.](https://github.com/pavlik-dev/kogame-translate/releases)
 
 ## Custom API
 As of now, the app doesn't support changing API endpoints. But what you can do is modify the source code directly.
