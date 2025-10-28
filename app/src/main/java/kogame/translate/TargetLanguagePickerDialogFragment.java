@@ -34,12 +34,7 @@ public class TargetLanguagePickerDialogFragment extends BottomSheetDialogFragmen
         super.onViewCreated(view, savedInstanceState);
 
         ImageView closeButton = view.findViewById(R.id.closeButton);
-        closeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
+        closeButton.setOnClickListener(v -> dismiss());
 
         RecyclerView recyclerView = view.findViewById(R.id.language_recycler);
 
