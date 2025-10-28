@@ -14,16 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KogameTranslate">
         <activity
-            android:name=".SettingsActivity"
-            android:exported="false"
-            android:theme="@style/Theme.KogameTranslate"
-            android:label="@string/title_activity_settings" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
