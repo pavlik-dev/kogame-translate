@@ -1,7 +1,9 @@
 package kogame.translate;
 
+import static android.view.View.GONE;
 import static android.view.View.TEXT_ALIGNMENT_CENTER;
 import static android.view.View.TEXT_ALIGNMENT_TEXT_START;
+import static android.view.View.VISIBLE;
 
 import android.annotation.SuppressLint;
 import android.content.ClipData;
@@ -16,6 +18,7 @@ import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -248,6 +251,10 @@ public class TranslatorActivity extends AppCompatActivity {
         ot.setGravity(error ? Gravity.CENTER : (Gravity.TOP | Gravity.START));
         ot.setTextAlignment(error ? TEXT_ALIGNMENT_CENTER : TEXT_ALIGNMENT_TEXT_START);
         ot.setText(content);
+        ViewGroup.LayoutParams params = ot.getLayoutParams();
+        params.height = error ? ViewGroup.LayoutParams.WRAP_CONTENT : 0;
+        ot.setLayoutParams(params);
+        binding.errorIcon.setVisibility(error ? VISIBLE : GONE);
         ot.setTextColor(error ? 0xFFFFD6D6 : 0xFFF9FFD6);
     }
 
