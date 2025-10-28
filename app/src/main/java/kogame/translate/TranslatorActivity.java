@@ -104,6 +104,15 @@ public class TranslatorActivity extends AppCompatActivity {
     }
 
     private void setupListeners() {
+        View rootView = findViewById(android.R.id.content);
+
+        ViewCompat.setOnApplyWindowInsetsListener(rootView, (v, insets) -> {
+            boolean imeVisible = insets.isVisible(WindowInsetsCompat.Type.ime());
+            binding.outputPanel.setVisibility(imeVisible ? GONE : VISIBLE);
+            return insets;
+        });
+
+
         binding.inputText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
